@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = D$:/OneDrive/perso/supérieur/ECE/info/test/cmake-build-debug/
+cmake_ninja_workdir = D$:/OneDrive/perso/supérieur/ECE/info/SnoopyMagicShow/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target test
 
@@ -49,37 +49,37 @@ cmake_ninja_workdir = D$:/OneDrive/perso/supérieur/ECE/info/test/cmake-build-deb
 
 build cmake_object_order_depends_target_test: phony || CMakeFiles/test.dir
 
-build CMakeFiles/test.dir/main.c.obj: C_COMPILER__test_unscanned_Debug D$:/OneDrive/perso/supérieur/ECE/info/test/main.c || cmake_object_order_depends_target_test
+build CMakeFiles/test.dir/main.c.obj: C_COMPILER__test_unscanned_Debug D$:/OneDrive/perso/supérieur/ECE/info/SnoopyMagicShow/main.c || cmake_object_order_depends_target_test
   DEP_FILE = CMakeFiles\test.dir\main.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\test.dir
   OBJECT_FILE_DIR = CMakeFiles\test.dir
 
-build CMakeFiles/test.dir/utils/matrice.c.obj: C_COMPILER__test_unscanned_Debug D$:/OneDrive/perso/supérieur/ECE/info/test/utils/matrice.c || cmake_object_order_depends_target_test
+build CMakeFiles/test.dir/utils/matrice.c.obj: C_COMPILER__test_unscanned_Debug D$:/OneDrive/perso/supérieur/ECE/info/SnoopyMagicShow/utils/matrice.c || cmake_object_order_depends_target_test
   DEP_FILE = CMakeFiles\test.dir\utils\matrice.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\test.dir
   OBJECT_FILE_DIR = CMakeFiles\test.dir\utils
 
-build CMakeFiles/test.dir/jeu/gestionTemps.c.obj: C_COMPILER__test_unscanned_Debug D$:/OneDrive/perso/supérieur/ECE/info/test/jeu/gestionTemps.c || cmake_object_order_depends_target_test
+build CMakeFiles/test.dir/jeu/gestionTemps.c.obj: C_COMPILER__test_unscanned_Debug D$:/OneDrive/perso/supérieur/ECE/info/SnoopyMagicShow/jeu/gestionTemps.c || cmake_object_order_depends_target_test
   DEP_FILE = CMakeFiles\test.dir\jeu\gestionTemps.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\test.dir
   OBJECT_FILE_DIR = CMakeFiles\test.dir\jeu
 
-build CMakeFiles/test.dir/utils/utils.c.obj: C_COMPILER__test_unscanned_Debug D$:/OneDrive/perso/supérieur/ECE/info/test/utils/utils.c || cmake_object_order_depends_target_test
+build CMakeFiles/test.dir/utils/utils.c.obj: C_COMPILER__test_unscanned_Debug D$:/OneDrive/perso/supérieur/ECE/info/SnoopyMagicShow/utils/utils.c || cmake_object_order_depends_target_test
   DEP_FILE = CMakeFiles\test.dir\utils\utils.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\test.dir
   OBJECT_FILE_DIR = CMakeFiles\test.dir\utils
 
-build CMakeFiles/test.dir/jeu/jeu.c.obj: C_COMPILER__test_unscanned_Debug D$:/OneDrive/perso/supérieur/ECE/info/test/jeu/jeu.c || cmake_object_order_depends_target_test
+build CMakeFiles/test.dir/jeu/jeu.c.obj: C_COMPILER__test_unscanned_Debug D$:/OneDrive/perso/supérieur/ECE/info/SnoopyMagicShow/jeu/jeu.c || cmake_object_order_depends_target_test
   DEP_FILE = CMakeFiles\test.dir\jeu\jeu.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\test.dir
   OBJECT_FILE_DIR = CMakeFiles\test.dir\jeu
 
-build CMakeFiles/test.dir/files/files.c.obj: C_COMPILER__test_unscanned_Debug D$:/OneDrive/perso/supérieur/ECE/info/test/files/files.c || cmake_object_order_depends_target_test
+build CMakeFiles/test.dir/files/files.c.obj: C_COMPILER__test_unscanned_Debug D$:/OneDrive/perso/supérieur/ECE/info/SnoopyMagicShow/files/files.c || cmake_object_order_depends_target_test
   DEP_FILE = CMakeFiles\test.dir\files\files.c.obj.d
   FLAGS = -g -std=gnu11 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\test.dir
@@ -108,7 +108,7 @@ build test.exe: C_EXECUTABLE_LINKER__test_Debug CMakeFiles/test.dir/main.c.obj C
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D D:\OneDrive\perso\supérieur\ECE\info\test\cmake-build-debug && "D:\fichiers\logiciels\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D D:\OneDrive\perso\supérieur\ECE\info\SnoopyMagicShow\cmake-build-debug && "D:\fichiers\logiciels\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -119,7 +119,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D D:\OneDrive\perso\supérieur\ECE\info\test\cmake-build-debug && "D:\fichiers\logiciels\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SD:\OneDrive\perso\supérieur\ECE\info\test -BD:\OneDrive\perso\supérieur\ECE\info\test\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D D:\OneDrive\perso\supérieur\ECE\info\SnoopyMagicShow\cmake-build-debug && "D:\fichiers\logiciels\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -SD:\OneDrive\perso\supérieur\ECE\info\SnoopyMagicShow -BD:\OneDrive\perso\supérieur\ECE\info\SnoopyMagicShow\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -137,7 +137,7 @@ build test: phony test.exe
 # =============================================================================
 
 #############################################
-# Folder: D:/OneDrive/perso/supérieur/ECE/info/test/cmake-build-debug
+# Folder: D:/OneDrive/perso/supérieur/ECE/info/SnoopyMagicShow/cmake-build-debug
 
 build all: phony test.exe
 
@@ -148,14 +148,14 @@ build all: phony test.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake D$:/OneDrive/perso/supérieur/ECE/info/test/CMakeLists.txt D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake
+build build.ninja: RERUN_CMAKE | CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake D$:/OneDrive/perso/supérieur/ECE/info/SnoopyMagicShow/CMakeLists.txt D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake D$:/OneDrive/perso/supérieur/ECE/info/test/CMakeLists.txt D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake: phony
+build CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeRCCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake D$:/OneDrive/perso/supérieur/ECE/info/SnoopyMagicShow/CMakeLists.txt D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeGenericSystem.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeRCInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU-C.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Compiler/GNU.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C-ABI.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU-C.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-GNU.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows-windres.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/Windows.cmake D$:/fichiers/logiciels/CLion$ 2023.2.2/bin/cmake/win/x64/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake: phony
 
 
 #############################################

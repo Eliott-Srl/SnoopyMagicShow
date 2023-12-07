@@ -14,4 +14,7 @@ add_executable(test main.c
         jeu/jeu.h
         utils/types.h
         files/files.c
-        files/files.h)
+        files/files.h
+        utils/matrice.c
+        utils/matrice.c
+        utils/matrice.c)
