@@ -13,21 +13,30 @@ typedef struct {
 } coordonnees;
 
 typedef struct {
+    coordonnees position;
+    coordonnees direction;
+    time_t lastUpdate;
+    int blockBehind;
+} Balle;
+
+typedef struct {
     int idNiveau;
     int score;
     time_t end;
     int niveauFini;
     int pause;
     coordonnees snoopy;
+    int blockSousSnoopy;
+    Balle balle;
     int matrice[HAUTEUR][LARGEUR];
-} s_Niveau;
+} Niveau;
 
 typedef struct {
     int nombreNiveaux;
     int score;
     int vies;
-    s_Niveau niveaux[NOMBRE_NIVEAUX];
+    Niveau niveaux[NOMBRE_NIVEAUX];
     int matrice[HAUTEUR][LARGEUR];
-} s_Jeu;
+} Jeu;
 
 #endif //TEST_TYPES_H

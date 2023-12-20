@@ -1,6 +1,6 @@
 #include "files.h"
 
-void loadNiveau(s_Niveau *niveau) {
+void loadNiveau(Niveau *niveau) {
     char filepath[MAX_PATH];
     GetModuleFileName(NULL, filepath, MAX_PATH);
     char *ret = strrchr(filepath, '\\');
@@ -28,6 +28,10 @@ void loadNiveau(s_Niveau *niveau) {
                     if (nb == 8) {
                         niveau->snoopy.x = h;
                         niveau->snoopy.y = l;
+                    }
+                    if (nb == 7) {
+                        niveau->balle.position.x = h;
+                        niveau->balle.position.y = l;
                     }
                     niveau->matrice[h][l] = nb;
                 } else {

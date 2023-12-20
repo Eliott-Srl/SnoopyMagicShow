@@ -10,7 +10,7 @@
 
 #define COULEUR 1
 
-void initialiseMatrice(s_Niveau *niveau);
-void afficherMatrice(s_Niveau *niveau);
+void initialiseMatrice(Niveau *niveau);
+void afficherMatrice(Niveau *niveau);
 
 #endif //TEST_MATRICE_H

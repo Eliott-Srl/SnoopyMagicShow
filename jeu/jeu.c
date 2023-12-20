@@ -1,14 +1,72 @@
 #include "jeu.h"
 
-int actionsBlock(s_Niveau *niveau, int directionX, int directionY) {
-    if (niveau->score > 12) {
-        return 1;
-    } else {
-        return 0;
+void bougerBalle(Niveau *niveau, int *vies) {
+    if (niveau->pause) {
+        return;
+    }
+
+    if (niveau->balle.lastUpdate < getTime()) {
+        niveau->balle.lastUpdate = getTime();
+
+
+        int posX = niveau->balle.position.x;
+        int posY = niveau->balle.position.y;
+        int dirX = niveau->balle.direction.x;
+        int dirY = niveau->balle.direction.y;
+
+        if (posX + dirX < 0 || posX + dirX >= HAUTEUR) {
+            niveau->balle.direction.x = -(dirX);
+        }
+
+        if (posY + dirY < 0 || posY + dirY >= LARGEUR) {
+            niveau->balle.direction.y = -(dirY);
+        }
+
+        niveau->matrice[posX][posY] = niveau->balle.blockBehind;
+
+        niveau->balle.position.x = posX + niveau->balle.direction.x;
+        niveau->balle.position.y = posY + niveau->balle.direction.y;
+
+        niveau->balle.blockBehind = niveau->matrice[niveau->balle.position.x][niveau->balle.position.y];
+        niveau->matrice[niveau->balle.position.x][niveau->balle.position.y] = 7;
+
+        if (niveau->snoopy.x == niveau->balle.position.x && niveau->snoopy.y == niveau->balle.position.y) {
+            (*vies)--;
+        }
     }
 }
 
-void pauseGame(s_Niveau *niveau) {
+int actionsBlock(Niveau *niveau, int directionX, int directionY) {
+    if (directionY == 0 && directionX == 0) {
+        return 0;
+    }
+
+    switch(niveau->matrice[niveau->snoopy.x + directionX][niveau->snoopy.y + directionY]) {
+        case 1: {
+            return 0;
+        }
+        case 2: {
+            niveau->snoopy.x += directionX;
+            niveau->snoopy.y += directionY;
+
+            niveau->matrice[niveau->snoopy.x + directionX][niveau->snoopy.y + directionY] = niveau->matrice[niveau->snoopy.x][niveau->snoopy.y];
+            niveau->matrice[niveau->snoopy.x][niveau->snoopy.y] = niveau->matrice[niveau->snoopy.x - directionX][niveau->snoopy.y - directionY];
+            niveau->matrice[niveau->snoopy.x - directionX][niveau->snoopy.y - directionY] = 0;
+            return 1;
+        }
+        case 4: {
+            return 1;
+        }
+        case 9: {
+
+        }
+        default: {
+            return 0;
+        }
+    }
+}
+
+void pauseGame(Niveau *niveau) {
     if (!niveau->pause) {
         niveau->pause = !niveau->pause;
         niveau->end -= getTime();
@@ -18,7 +76,7 @@ void pauseGame(s_Niveau *niveau) {
     }
 }
 
-void mouvement(s_Niveau *niveau, int touche) {
+void mouvement(Niveau *niveau, int touche) {
     int x = niveau->snoopy.x;
     int y = niveau->snoopy.y;
 
@@ -67,25 +125,38 @@ void mouvement(s_Niveau *niveau, int touche) {
 }
 
 void jeu() {
-    s_Jeu gameHolder = {NOMBRE_NIVEAUX, 0, 3};
-
+    Jeu gameHolder = {NOMBRE_NIVEAUX, 0, 3};
+    srand(time(0));
     for (int niveauIdx = 0; niveauIdx < gameHolder.nombreNiveaux; niveauIdx++) {
-        s_Niveau niveau = gameHolder.niveaux[niveauIdx];
+        Niveau niveau = gameHolder.niveaux[niveauIdx];
         niveau.idNiveau = niveauIdx + 1;
         niveau.score = 0;
         niveau.pause = 0;
         niveau.niveauFini = 0;
+        niveau.snoopy.x = 0;
+        niveau.snoopy.y = 0;
+        niveau.blockSousSnoopy = 0;
+        niveau.balle.position.x = 0;
+        niveau.balle.position.y = 0;
+        niveau.balle.direction.x = rand()%2 == 0 ? -1 : 1;
+        niveau.balle.direction.y = rand()%2 == 0 ? -1 : 1;
+
         loadNiveau(&niveau);
         niveau.end = initialiserTimer();
-        while (niveau.pause || (!tempsAtteint(niveau.end) && !niveau.niveauFini)) {
+        niveau.balle.lastUpdate = getTime();
+        while (niveau.pause || (gameHolder.vies != 0 && !tempsAtteint(niveau.end) && !niveau.niveauFini)) {
             system("cls");
+            printf("Vies: %d\n", gameHolder.vies);
             afficherMatrice(&niveau);
+            bougerBalle(&niveau, &gameHolder.vies);
             if (_kbhit()) {
                 mouvement(&niveau, getch());
             } else {
-                sleep(200);
+                Sleep(200);
             }
         }
         niveau.score = niveau.end - getTime();
     }
+    printf("You lost, you crusty bastard!");
+    getch();
 }

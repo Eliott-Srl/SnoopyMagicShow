@@ -7,8 +7,8 @@
 #include "../utils/types.h"
 #include "../files/files.h"
 
-void pauseGame(s_Niveau *iveau);
-void mouvement(s_Niveau *niveau, int touche);
+void pauseGame(Niveau *iveau);
+void mouvement(Niveau *niveau, int touche);
 void jeu();
 
 #endif //TEST_JEU_H

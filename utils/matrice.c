@@ -1,6 +1,6 @@
 #include "matrice.h"
 
-void initialiseMatrice(s_Niveau *niveau) {
+void initialiseMatrice(Niveau *niveau) {
     for (int h = 0; h < HAUTEUR; h++) {
         for (int l = 0; l < LARGEUR; l++) {
             niveau->matrice[h][l] = 0;
@@ -8,7 +8,7 @@ void initialiseMatrice(s_Niveau *niveau) {
     }
 }
 
-void afficherMatrice(s_Niveau *niveau) {
+void afficherMatrice(Niveau *niveau) {
     int emoji[] = {0x20, 0xB0, 0xC5, 0xCF, 0xB2, 0x40, 0xCE, 0x4F, 0xA9, 0xF8};
     time_t timer = (niveau->pause ? niveau->end : niveau->end - getTime());
 
@@ -20,7 +20,13 @@ void afficherMatrice(s_Niveau *niveau) {
         if (timer >= l) {
             printf(" #");
         } else {
-            printf("  ");
+            if (COULEUR) {
+                colorScreen(8, 2);
+            }
+            printf(" #");
+            if (COULEUR) {
+                colorScreen(15, 2);
+            }
         }
     }
 
@@ -30,7 +36,13 @@ void afficherMatrice(s_Niveau *niveau) {
         if (timer >= 60 - l) {
             printf(" #");
         } else {
-            printf("  ");
+            if (COULEUR) {
+                colorScreen(8, 2);
+            }
+            printf(" #");
+            if (COULEUR) {
+                colorScreen(15, 2);
+            }
         }
     }
 
@@ -40,7 +52,13 @@ void afficherMatrice(s_Niveau *niveau) {
         if ((60 - (timer + 40)) <= (HAUTEUR - h)) {
             printf(" # ");
         } else {
-            printf("   ");
+            if (COULEUR) {
+                colorScreen(8, 2);
+            }
+            printf(" # ");
+            if (COULEUR) {
+                colorScreen(15, 2);
+            }
         }
 
         for (int l = 0; l < LARGEUR; l++) {
@@ -50,13 +68,25 @@ void afficherMatrice(s_Niveau *niveau) {
         if (timer >= (60 - 9 - h)) {
             printf("# \n");
         } else {
-            printf("  \n");
+            if (COULEUR) {
+                colorScreen(8, 2);
+            }
+            printf("# \n");
+            if (COULEUR) {
+                colorScreen(15, 2);
+            }
         }
     }
 
     for (int l = LARGEUR + 2; l > 0; l--) {
         if (60 - timer >= (LARGEUR/2 - 1 + HAUTEUR + l)) {
-            printf("  ");
+            if (COULEUR) {
+                colorScreen(8, 2);
+            }
+            printf(" #");
+            if (COULEUR) {
+                colorScreen(15, 2);
+            }
         } else {
             printf(" #");
         }

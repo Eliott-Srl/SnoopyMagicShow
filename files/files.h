@@ -7,6 +7,6 @@
 #include <windows.h>
 #include <time.h>
 
-void loadNiveau(s_Niveau *niveau);
+void loadNiveau(Niveau *niveau);
 
 #endif //TEST_FILES_H

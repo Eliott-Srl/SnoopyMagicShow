@@ -10,11 +10,8 @@ add_executable(test main.c
         jeu/gestionTemps.h
         utils/utils.c
         utils/utils.h
-        jeu/jeu.c
-        jeu/jeu.h
         utils/types.h
         files/files.c
         files/files.h
-        utils/matrice.c
-        utils/matrice.c
-        utils/matrice.c)
+        jeu/jeu.c
+        jeu/jeu.h)
