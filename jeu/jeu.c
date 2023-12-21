@@ -36,7 +36,7 @@ void bougerBalle(Niveau *niveau, int *vies) {
     }
 }
 
-int actionsBlock(Niveau *niveau, int directionX, int directionY) {
+int actionsBlock(Niveau *niveau, int directionX, int directionY, int *vies) {
     if (directionY == 0 && directionX == 0) {
         return 0;
     }
@@ -46,19 +46,24 @@ int actionsBlock(Niveau *niveau, int directionX, int directionY) {
             return 0;
         }
         case 2: {
-            niveau->snoopy.x += directionX;
-            niveau->snoopy.y += directionY;
+            if (niveau->matrice[niveau->snoopy.x + 2*directionX][niveau->snoopy.y + 2*directionY] == 0) {
+                niveau->snoopy.x += directionX;
+                niveau->snoopy.y += directionY;
 
-            niveau->matrice[niveau->snoopy.x + directionX][niveau->snoopy.y + directionY] = niveau->matrice[niveau->snoopy.x][niveau->snoopy.y];
-            niveau->matrice[niveau->snoopy.x][niveau->snoopy.y] = niveau->matrice[niveau->snoopy.x - directionX][niveau->snoopy.y - directionY];
-            niveau->matrice[niveau->snoopy.x - directionX][niveau->snoopy.y - directionY] = 0;
-            return 1;
+                niveau->matrice[niveau->snoopy.x + directionX][niveau->snoopy.y + directionY] = 4;
+                niveau->matrice[niveau->snoopy.x][niveau->snoopy.y] = niveau->matrice[niveau->snoopy.x - directionX][niveau->snoopy.y - directionY];
+                niveau->matrice[niveau->snoopy.x - directionX][niveau->snoopy.y - directionY] = 0;
+                return 1;
+            }
+        }
+        case 3: {
+            niveau->oiseaux++;
         }
         case 4: {
             return 1;
         }
         case 9: {
-
+            niveau->oiseaux++;
         }
         default: {
             return 0;
@@ -76,7 +81,7 @@ void pauseGame(Niveau *niveau) {
     }
 }
 
-void mouvement(Niveau *niveau, int touche) {
+void mouvement(Niveau *niveau, int *vies, int touche) {
     int x = niveau->snoopy.x;
     int y = niveau->snoopy.y;
 
@@ -115,7 +120,7 @@ void mouvement(Niveau *niveau, int touche) {
             break;
     }
 
-    if (!niveau->pause && !actionsBlock(niveau, directionX, directionY)) {
+    if (!niveau->pause && !actionsBlock(niveau, directionX, directionY, vies)) {
         niveau->snoopy.x += directionX;
         niveau->snoopy.y += directionY;
 
@@ -133,6 +138,7 @@ void jeu() {
         niveau.score = 0;
         niveau.pause = 0;
         niveau.niveauFini = 0;
+        niveau.oiseaux = 0;
         niveau.snoopy.x = 0;
         niveau.snoopy.y = 0;
         niveau.blockSousSnoopy = 0;
@@ -150,7 +156,7 @@ void jeu() {
             afficherMatrice(&niveau);
             bougerBalle(&niveau, &gameHolder.vies);
             if (_kbhit()) {
-                mouvement(&niveau, getch());
+                mouvement(&niveau, &gameHolder.vies, getch());
             } else {
                 Sleep(200);
             }

@@ -25,6 +25,7 @@ typedef struct {
     time_t end;
     int niveauFini;
     int pause;
+    int oiseaux;
     coordonnees snoopy;
     int blockSousSnoopy;
     Balle balle;
