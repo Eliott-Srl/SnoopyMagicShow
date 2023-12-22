@@ -30,8 +30,14 @@ void loadNiveau(Niveau *niveau) {
                         niveau->snoopy.y = l;
                     }
                     if (nb == 7) {
-                        niveau->balle.position.x = h;
-                        niveau->balle.position.y = l;
+                        if(niveau->balles < 10) {
+                            niveau->balle[niveau->balles].position.x = h;
+                            niveau->balle[niveau->balles].position.y = l;
+                            niveau->balle[niveau->balles].direction.x = (rand()%2)*2-1;
+                            niveau->balle[niveau->balles].direction.y = (rand()%2)*2-1;
+                            niveau->balles++;
+                            printf("%d", niveau->balles);
+                        }
                     }
                     niveau->matrice[h][l] = nb;
                 } else {

@@ -4,6 +4,7 @@
 #include <time.h>
 
 #define NOMBRE_NIVEAUX 3
+#define NOMBRE_BALL_MAX 10
 #define HAUTEUR 10
 #define LARGEUR 20
 
@@ -28,7 +29,8 @@ typedef struct {
     int oiseaux;
     coordonnees snoopy;
     int blockSousSnoopy;
-    Balle balle;
+    int balles;
+    Balle balle[NOMBRE_BALL_MAX];
     int matrice[HAUTEUR][LARGEUR];
 } Niveau;
 

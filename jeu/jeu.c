@@ -5,34 +5,38 @@ void bougerBalle(Niveau *niveau, int *vies) {
         return;
     }
 
-    if (niveau->balle.lastUpdate < getTime()) {
-        niveau->balle.lastUpdate = getTime();
+    for (int i = 0; i < niveau->balles; i++) {
+        if (niveau->balle[i].lastUpdate < getTime()) {
+            int posX = niveau->balle[i].position.x;
+            int posY = niveau->balle[i].position.y;
+            int dirX = niveau->balle[i].direction.x;
+            int dirY = niveau->balle[i].direction.y;
 
+            if (posX + dirX < 0 || posX + dirX >= HAUTEUR) {
+                niveau->balle[i].direction.x = -(dirX);
+            }
 
-        int posX = niveau->balle.position.x;
-        int posY = niveau->balle.position.y;
-        int dirX = niveau->balle.direction.x;
-        int dirY = niveau->balle.direction.y;
+            if (posY + dirY < 0 || posY + dirY >= LARGEUR) {
+                niveau->balle[i].direction.y = -(dirY);
+            }
 
-        if (posX + dirX < 0 || posX + dirX >= HAUTEUR) {
-            niveau->balle.direction.x = -(dirX);
+            niveau->matrice[posX][posY] = niveau->balle[i].blockBehind;
+
+            niveau->balle[i].position.x = posX + niveau->balle[i].direction.x;
+            niveau->balle[i].position.y = posY + niveau->balle[i].direction.y;
+
+            if (niveau->matrice[niveau->balle[i].position.x][niveau->balle[i].position.y] != 8) {
+                niveau->balle[i].blockBehind = niveau->matrice[niveau->balle[i].position.x][niveau->balle[i].position.y];
+            }
+
+            niveau->matrice[niveau->balle[i].position.x][niveau->balle[i].position.y] = 7;
+
+            if (niveau->snoopy.x == niveau->balle[i].position.x && niveau->snoopy.y == niveau->balle[i].position.y) {
+                (*vies)--;
+            }
+
         }
-
-        if (posY + dirY < 0 || posY + dirY >= LARGEUR) {
-            niveau->balle.direction.y = -(dirY);
-        }
-
-        niveau->matrice[posX][posY] = niveau->balle.blockBehind;
-
-        niveau->balle.position.x = posX + niveau->balle.direction.x;
-        niveau->balle.position.y = posY + niveau->balle.direction.y;
-
-        niveau->balle.blockBehind = niveau->matrice[niveau->balle.position.x][niveau->balle.position.y];
-        niveau->matrice[niveau->balle.position.x][niveau->balle.position.y] = 7;
-
-        if (niveau->snoopy.x == niveau->balle.position.x && niveau->snoopy.y == niveau->balle.position.y) {
-            (*vies)--;
-        }
+        niveau->balle[i].lastUpdate = getTime();
     }
 }
 
@@ -57,13 +61,21 @@ int actionsBlock(Niveau *niveau, int directionX, int directionY, int *vies) {
             }
         }
         case 3: {
-            niveau->oiseaux++;
+            (*vies)--;
+            return 1;
         }
         case 4: {
             return 1;
         }
+        case 5: {
+            // TODO: Téléporteur
+            return 1;
+        }
         case 9: {
             niveau->oiseaux++;
+            if (niveau->oiseaux == 4) {
+                niveau->niveauFini = 1;
+            }
         }
         default: {
             return 0;
@@ -129,40 +141,80 @@ void mouvement(Niveau *niveau, int *vies, int touche) {
     }
 }
 
+int totalScore(Jeu *gameHolder) {
+    int sum = 0;
+    for (int i = 0; i < gameHolder->nombreNiveaux; i++) {
+        sum += gameHolder->niveaux[i].score;
+    }
+    return sum;
+}
+
 void jeu() {
     Jeu gameHolder = {NOMBRE_NIVEAUX, 0, 3};
+    char *motDePasses[] = {"", "complexe?", "thelastone"};
     srand(time(0));
     for (int niveauIdx = 0; niveauIdx < gameHolder.nombreNiveaux; niveauIdx++) {
+        if (strcmp(motDePasses[niveauIdx], "")) {
+            char answer[MAX_PATH];
+            system("cls");
+            printf("Quelle est le mot de passe du niveau %d\n", niveauIdx + 1);
+            scanf("%s", answer);
+
+            if(!strcmp(motDePasses[niveauIdx], answer)) {
+                printf("On y vas!");
+                Sleep(1000);
+            } else {
+                break;
+            }
+        }
         Niveau niveau = gameHolder.niveaux[niveauIdx];
         niveau.idNiveau = niveauIdx + 1;
         niveau.score = 0;
         niveau.pause = 0;
         niveau.niveauFini = 0;
         niveau.oiseaux = 0;
-        niveau.snoopy.x = 0;
-        niveau.snoopy.y = 0;
+        niveau.snoopy.x = HAUTEUR/2;
+        niveau.snoopy.y = LARGEUR/2;
         niveau.blockSousSnoopy = 0;
-        niveau.balle.position.x = 0;
-        niveau.balle.position.y = 0;
-        niveau.balle.direction.x = rand()%2 == 0 ? -1 : 1;
-        niveau.balle.direction.y = rand()%2 == 0 ? -1 : 1;
-
         loadNiveau(&niveau);
         niveau.end = initialiserTimer();
-        niveau.balle.lastUpdate = getTime();
+        for(int i = 0; i < niveau.balles; i++) {
+            (niveau.balle[i]).lastUpdate = getTime();
+        }
         while (niveau.pause || (gameHolder.vies != 0 && !tempsAtteint(niveau.end) && !niveau.niveauFini)) {
             system("cls");
-            printf("Vies: %d\n", gameHolder.vies);
+            printf(" Vies: %d                 Oiseaux restants: %d\n", gameHolder.vies, 4 - niveau.oiseaux);
             afficherMatrice(&niveau);
             bougerBalle(&niveau, &gameHolder.vies);
+            niveau.matrice[niveau.snoopy.x][niveau.snoopy.y] = 8;
             if (_kbhit()) {
                 mouvement(&niveau, &gameHolder.vies, getch());
             } else {
                 Sleep(200);
             }
         }
-        niveau.score = niveau.end - getTime();
+        system("cls");
+        printf(" Vies: %d                 Oiseaux restants: %d\n", gameHolder.vies, 4 - niveau.oiseaux);
+        afficherMatrice(&niveau);
+        if (gameHolder.vies != 0 && !tempsAtteint(niveau.end) && niveau.niveauFini) {
+            niveau.score = (int)(niveau.end - getTime())*100;
+            if (niveauIdx + 1 != NOMBRE_NIVEAUX) {
+                printf("Le mot de passe du prochain niveau: %s\nAppuie sur une touche quand tu as retenu\n", motDePasses[niveauIdx + 1]);
+                Sleep(1000);
+                getch();
+            }
+        } else {
+            break;
+        }
     }
-    printf("You lost, you crusty bastard!");
+
+    if (!gameHolder.niveaux[gameHolder.nombreNiveaux - 1].niveauFini) {
+        printf("Vous avez perdu, essayez plus fort!\n");
+    } else {
+        printf("Bravo! Vous avez fini le jeux !!!!!!! :)\n");
+    }
+
+    printf("Votre score est de %d points\n", totalScore(&gameHolder));
+    Sleep(2000);
     getch();
 }
