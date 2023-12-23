@@ -28,9 +28,8 @@ void loadNiveau(Niveau *niveau) {
                     if (nb == 8) {
                         niveau->snoopy.x = h;
                         niveau->snoopy.y = l;
-                    }
-                    if (nb == 7) {
-                        if(niveau->balles < 10) {
+                    } else if (nb == 7) {
+                        if(niveau->balles < NOMBRE_BALL_MAX) {
                             niveau->balle[niveau->balles].position.x = h;
                             niveau->balle[niveau->balles].position.y = l;
                             niveau->balle[niveau->balles].direction.x = (rand()%2)*2-1;
@@ -48,6 +47,49 @@ void loadNiveau(Niveau *niveau) {
             printf("The file doesn't have the correct format!");
         }
     }
+    fclose(file);
+}
+void sauvegarderPartie(Jeu *jeu, Niveau *niveau, char *nom) {
+    char filepath[MAX_PATH];
+    GetModuleFileName(NULL, filepath, MAX_PATH);
+    char *ret = strrchr(filepath, '\\');
+    *ret = '\0';
+    strcat(filepath, "\\sauvegardes\\");
+    strcat(filepath, nom);
+    strcat(filepath, ".dat");
+
+    FILE *file;
+
+    file = fopen(filepath, "w");
+
+    if (!file) {
+        printf("The file doesn't exist in %s !\n", filepath);
+        return;
+    }
+
+    fwrite(jeu, sizeof(Jeu), 1, file);
+
+    fclose(file);
+}
+void loadPartie(Jeu *jeu, Niveau *niveau, char *nom) {
+    char filepath[MAX_PATH];
+    GetModuleFileName(NULL, filepath, MAX_PATH);
+    char *ret = strrchr(filepath, '\\');
+    *ret = '\0';
+    strcat(filepath, "\\sauvegardes\\");
+    strcat(filepath, nom);
+    strcat(filepath, ".dat");
+
+    FILE *file;
+
+    file = fopen(filepath, "r");
+
+    if (!file) {
+        printf("The file doesn't exist in %s !\n", filepath);
+        return;
+    }
+
+    fread(jeu, sizeof(Jeu), 1, file);
 
     fclose(file);
 }

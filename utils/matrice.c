@@ -11,7 +11,6 @@ void initialiseMatrice(Niveau *niveau) {
 void afficherMatrice(Niveau *niveau) {
     int emoji[] = {0x20, 0xB0, 0xC5, 0xCF, 0xB2, 0x40, 0xCE, 0x4F, 0xA9, 0xF8};
     time_t timer = (niveau->pause ? niveau->end : niveau->end - getTime());
-
     if (COULEUR) {
         colorScreen(15, 2);
     }

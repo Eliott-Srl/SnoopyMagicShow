@@ -4,7 +4,7 @@
 #include <time.h>
 
 #define NOMBRE_NIVEAUX 3
-#define NOMBRE_BALL_MAX 10
+#define NOMBRE_BALL_MAX 2
 #define HAUTEUR 10
 #define LARGEUR 20
 
