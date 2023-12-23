@@ -101,6 +101,7 @@ int actionsBlock(Niveau *niveau, int directionX, int directionY, int *vies) {
         }
         case 9: {
             niveau->oiseaux++;
+            printf("%d", niveau->oiseaux);
             if (niveau->oiseaux == 4) {
                 niveau->niveauFini = 1;
             }
@@ -244,7 +245,6 @@ void motdepasse(int *idniveau, int *jeulanch, int *jeufini, int *score) {
 
 void jeu() {
     Jeu gameHolder = {NOMBRE_NIVEAUX, 0, 3};
-    char *motDePasses[] = {"", "complexe?", "thelastone"};
     int scoreTotal = 0;
     int jeuFini = 0;
     int jeuLanch = 0;
@@ -260,5 +260,6 @@ void jeu() {
 
     printf("Votre score est de %d points\n", scoreTotal);
     Sleep(2000);
+    printf("Appuyez pour continuer \n");
     getch();
 }
